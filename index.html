@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="style.css">
+	<script src="app.js"></script>
+	<title>Inception</title>
+</head>
+<body>
+	<header>
+		<div class="header__left"><h1>Luca Ray</h1></div>
+		<div class="header__right"><div class="overlay_img"></div></div>
+	</header>
+	<main>
+		<h1>Inception</h1>
+		<h2>Lien et connexion</h2>
+		<ul>
+			<li><a href="https://localhost">Wordpress</a></li>
+			<li><a href="http://localhost">Site static</a></li>
+			<li><a href="https://localhost:8080">Adminer</a></li>
+			<li>FTP: localhost:21</li>
+		</ul>
+		<h2>Présentation du projet</h2>
+		<p>
+			Ce projet nous demande de monter une infrastructure de container <code>Docker</code> et de les orchestrer avec
+			<code>docker compose</code>. Le but de se projet est de découvrir et nous familiariser avec <code>Docker</code>
+			ainsi que l'administration <code>Linux</code>. Il nous permet aussi de découvrir des services comme <code>nginx</code>
+			et <code>mariadb</code>
+
+		</p>
+		<h3>Objectifs principaux</h3>
+		<p>
+			Pour la partie principale, nous devons créer une infrastructure se composant de :
+			<ul>
+				<li>
+					Un container qui contient <code>NGINX</code> avec TLSv1.2 ou TLSv1.3
+				</li>
+				<li>
+					Un container qui contient <code>WordePress</code> et <code>php-fpm</code> sans nginx
+				</li>
+				<li>
+					Un container pour <code>mariaDB</code> sans nginx
+				</li>
+				<li>
+					Un volume pour la base de donnée de <code>WordPress</code>
+				</li>
+				<li>
+					Un seconde volume qui contient les fichier de <code>WordPress</code>
+				</li>
+			</ul>
+		</p>
+		<p>
+			En plus de ces container, il faut que le site <code>WordPress</code> soit installé. Sa base de données
+			doit contenir deux utilisateurs, le super utilisateurs ainsi qu'un utilisateur lambda.
+
+			Nous devons aussi faire attention de pas mettre de mot de passe ni aucune autre informations sensible dans
+			nos fichiers de configuration.
+		</p>
+		<img src="assets/diag/default.PNG" />
+		<h3>Objectifs bonus</h3>
+		<p>
+			Comme d'habitude nous avons des objectifs bonus qui nous permette de pousser plus le projet. J'ai choisis
+			de faire tous les bonus car le sujet ma vraiment intéressé.
+		</p>
+		<p>
+			Voici la liste des services supplémentaire que nous devons ajouter en plus de la partie obligatoire :
+			<ul>
+				<li>Configurer un serveur <code>Redis</code> afin de servir de cache pour <code>WordPress</code></li>
+				<li>Configurer un serveur <code>FTP</code> qui point sur le volume de <code>WordPress</code></li>
+				<li>Créer un simple site statique (welcome on board) sans PHP</li>
+				<li>Configurer <code>Adminer</code></li>
+				<li>Configurer le service de notre choix</li>
+			</ul>
+		</p>
+		<img src="assets/diag/bonus.png" />
+		<h2>Comment cela fonctionne</h2>
+		<p>
+			Pour pouvoir interagir avec l'infrastructure, j'ai fait un <code>Makefile</code> :
+			<ul>
+				<li><code>make up</code> : Construit les images et lance les containers</li>
+				<li><code>make down</code> : Supprime les images et stop les containers</li>
+				<li><code>make start</code> : Lance les containers</li>
+				<li><code>make stop</code> : Stop les containers</li>
+				<li><code>make clean</code> : Stop les containers et supprime toutes traces</li>
+				<li><code>make re</code> : Recrée les images sans les supprimer (seulement les images qui ont
+				été modifiée seront construite à nouveau</li>
+			</ul>
+		</p>
+	</main>
+	<footer>
+		<p>❤️🍻👽 lray@42Lausanne 👾🤟❤️</p>
+	</footer>
+</body>
+</html>

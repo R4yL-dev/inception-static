@@ -1,0 +1,78 @@
+body {
+	font-family: sans-serif;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+code {
+	font-size: 1.1em;
+	font-weight:bold;
+	text-decoration: underline dashed 1px #3B60E4;
+}
+a {
+	text-decoration: underline dashed 1px #3B60E4;
+}
+a:hover {
+	text-decoration-thickness: 2px;
+}
+a:visited {
+	color: inherit;
+}
+header {
+	position: sticky;
+	top: 0;
+	background-color: #212121;
+	color: #3B60E4;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 10vh;
+	padding: 0 2vw;
+}
+.header__left h1 {
+	transition: opacity 0.5s ease;
+	opacity: 1;
+}
+.header__left h1.fade-out {
+	opacity: 0;
+}
+.header__right {
+	display: block;
+	background-image: url("assets/images/lray.jpg");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 80%;
+	width: auto;
+	aspect-ratio: 1 / 1;
+	border-radius: 50%;
+}
+.overlay_img {
+	display: block;
+	width: auto;
+	height: 100%;
+	background-image: url("assets/images/capybara.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	border-radius: 50%;
+	opacity: 0;
+	transition: opacity 0.5s ease-in-out;
+}
+main {
+	flex: 1;
+	padding: 0 3vw;
+	background-color: #e0e0e0;
+}
+main h1,h2,h3 {
+	color: #3B60E4;
+	text-decoration: underline;
+	text-decoration-thickness:2px;
+}
+footer {
+	background-color: #212121;
+	color: #e0e0e0;
+	text-align: center;
+}
